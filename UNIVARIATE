@@ -1,0 +1,39 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Load the dataset
+df =pd.read_csv(r"C:\Users\Khansa\Downloads\archive (4)\Iris.csv")
+df.describe
+
+#Display univariate data using histogram
+sns.set(style="whitegrid")
+plt.figure(figsize=(12,6))
+
+#Sepal Length
+plt.subplot(2,2,1) #subplot takes 3 parameters(rows,colowmn,index)
+sns.histplot(df['SepalLengthCm'],color='darkorange')
+plt.title("Sepal Length")
+#Sepal width
+plt.subplot(2,2,1) #subplot takes 3 parameters(rows,colowmn,index)
+sns.histplot(df['SepalWidthCm'],color='blue')
+plt.title("Sepal Width")
+
+#Using Histogram for categorical variable
+sns.histplot(x='SepalLengthCm', data =df,hue = df['Species'])
+sns.histplot(x='PetalLengthCm', data =df,hue = df['Species'])
+
+#Vertical Histogram plot
+sns.histplot(y='SepalLengthCm', data =df, color ='blue')
+
+#Boxplot(min,max, quartile, upper,lower)
+sns.boxplot(df['SepalLengthCm'], color ='green')
+plt.show()
+df['SepalLengthCm'].describe()
+
+#Countplot - used for the distribution on categorical variable
+sns.countplot(x=df['Species'] )
+plt.show()
+
+#bivariate analysis on categorical variable
+sns.barplot(x = 'Species', y= 'SepalLengthCm', data =df)
