@@ -1,0 +1,15 @@
+from scipy.stats import ttest_1samp
+import numpy as np
+print("Khansa Khan KFMSCIT017\n")
+age = [45,89,23,46,12,69,45,24,34,67]
+print("Age: ",age)
+
+m1 = np.mean(age)
+print("\n Mean of Age: ",m1)
+t_test,p_value= ttest_1samp(age,30)
+print("\n PVALUE : ",p_value)
+
+if p_value < 0.05:
+  print("\n We reject the hypothesis")
+else:
+  print("\n We accept the hypothesis")
