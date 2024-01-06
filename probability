@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#set a random seed for reproduce
+np.random.seed(0)
+
+#Generate a random sample from normal distribution
+mean = 0
+std_dev = 1
+num_sample = 100
+normal_sample = np.random.normal(mean, std_dev,num_sample)
+
+#Generate random sample from a uniform distribution
+low=0
+high =1
+uniform_sample =np.random.uniform(low,high,num_sample)
+
+print("Khansa Khan KFMSCIT017\n")
+
+print("****** PROBABILITY DISTRIBUTION ******\n")
+
+#Create a fig with a sample for histogram
+fig,axes = plt.subplots(1,2,figsize =(12,5))
+axes[0].hist(normal_sample, bins =2-0, color = 'blue', alpha =0.6)
+
+axes[0].set_title("Normal Distribution")
+axes[1].set_title("Uniform Distribution")
+axes[1].hist(uniform_sample, bins =20, color ='green', alpha =0.6)
+
+for ax in axes:
+    ax.set_xlabel("Values")
+    ax.set_ylabel("Frequency")
+plt.show()
