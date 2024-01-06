@@ -1,0 +1,18 @@
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+print("Khansa Khan KFMSCIT017\n")
+data =pd.read_csv(r"C:\Users\Khansa\Downloads\archive (4)\Iris.csv")
+
+#split data into training and testing
+x= data[['SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm']]
+y = data['Species']
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3)
+
+#applying model on test data
+model = LogisticRegression()
+model.fit(x_train,y_train)
+pred =model.predict(x_test)
+accuracy = accuracy_score(y_test,pred)
+print("Accuracy: ",accuracy)
