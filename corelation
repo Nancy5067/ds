@@ -1,0 +1,43 @@
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+#load the dataset
+df = pd.read_csv(r"C:\Users\Khansa\Downloads\data_new.csv")
+print("Khansa Khan KFMSCIT017\n")
+
+#select the variable
+x= df['tcs']
+y= df['wipro']
+
+#calculate the correaltion coefficient
+c=stats.pearsonr(x,y)[0]
+print("Correlation Coefficient: ",c)
+
+if c > 0.7:
+    print("\nStrong Positive Correlation")
+elif c> 0.4:
+    print("\nModerate Corelation")
+elif c>0:
+    print("Weak Positive Corelation")
+elif c< 0 and c> -0.4:
+    print("\nWeak Negative Corelation")
+elif c< -0.7:
+    print("\nModerte Negative Correlation")
+else:
+    print("\nNo correlation")
+    
+# Perform simple Linear Regression
+m = stats.linregress(x,y)
+#extract the regression coefficient
+s= m.slope
+i = m.intercept
+
+print("\nSlope : ",s)
+print("\nIntercept : ",i)
+
+pred_y = s*x+i
+
+#r_value =m.r2_score
+
+print(pred_y)
